@@ -6,6 +6,8 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
+import requests
+import dynamodb
 
 def home(request):
 
@@ -66,4 +68,4 @@ def home(request):
 	userId = request.GET.get('user_id')
 	dynamodb.add_access_code(userId,access_token)
 	
-	return render(request, 'check/status.html', {'final_data':data})
+	return render(request, 'app/base.html', {'final_data':data})
