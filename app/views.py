@@ -18,7 +18,7 @@ def home(request):
 	# them here
 
 	parameters = {
-	    'redirect_uri': 'https://alexauber.azurewebsites.net',
+	    'redirect_uri': 'https://uberalexa.azurewebsites.net',
 	    'code': request.GET.get('code'),
 	    'grant_type': 'authorization_code',
 	}
