@@ -1,13 +1,15 @@
 ﻿"""
 Definition of views.
 """
-
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
 import requests
 import dynamodb
+from rauth import OAuth2Service
+
 
 def home(request):
 
@@ -69,3 +71,24 @@ def home(request):
 	dynamodb.add_access_code(userId,access_token)
 	
 	return render(request, 'app/base.html', {'final_data':data})
+
+
+def loginUrl(request):
+	uber_api = OAuth2Service(
+		client_id='9x5d54-oGBfVr-3zC4wAnYyY9783iF9k',
+		client_secret='-iREizzW6dqHtqdCZFIjbWTQYxTwiEUdKQxV7Hta',
+		name='Findango',
+		authorize_url='https://login.uber.com/oauth/authorize',
+		access_token_url='https://login.uber.com/oauth/token',
+		base_url='https://api.uber.com/v1/',
+	)
+
+	parameters = {
+	'response_type': 'code',
+	'redirect_uri': 'https://alexauber.azurewebsites.net' + "?user_id=" + request.GET.get('user_id') + "&source_lat=" + request.GET.get('source_lat') + "&source_lon=" + request.GET.get('source_lon') + "&dest_lat=" + request.GET.get('dest_lat') + "&dest_lon=" + request.GET.get('dest_lon') + "&product_id=" + request.GET.get('product_id'),
+	'scope': 'profile',
+	}
+
+	# Redirect user here to authorize your application
+	login_url = uber_api.get_authorize_url(**parameters)
+	return HttpResponse(login_url)
