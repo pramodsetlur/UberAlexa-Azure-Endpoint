@@ -53,8 +53,9 @@ def home(request):
 	)
 	data = response.json()
 
+	table_name = "user_access_code"
 	userId = request.GET.get('user_id')
-	dynamodb.add_access_code(userId,access_token)
+	dynamodb.add_access_code(table_name, userId, access_token)
 	
 	return render(request, 'app/base.html', {'final_data':data})
 
@@ -84,3 +85,10 @@ def test(request):
 
 def privacy_policy(request):
 	return HttpResponse("Your access code will be used to book a ride for you. This information is kept confidential and isn't shared with any other party")
+
+def insertDb(request):
+	userId = request.GET.get('user_id')
+	location = request.GET.get('lat') + "_" + request.GET.get('lon')
+	table_name = "user_location"
+	dynamodb.add_access_code(table_name, userId, location)
+	return HttpResponse(userId + " - " + location)
