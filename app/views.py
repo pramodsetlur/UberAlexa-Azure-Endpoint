@@ -10,7 +10,6 @@ import requests
 import dynamodb
 from rauth import OAuth2Service
 
-
 def home(request):
 
 
@@ -92,3 +91,6 @@ def loginUrl(request):
 	# Redirect user here to authorize your application
 	login_url = uber_api.get_authorize_url(**parameters)
 	return HttpResponse(login_url)
+
+def test(request):
+	return HttpResponse("Hello World!");
