@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^$', 'app.views.home', name='home'),
     url(r'^loginurl$', 'app.views.loginUrl', name='loginUrl'),
     url(r'^test$', 'app.views.test', name='test'),
+    url(r'^privacy_policy$', 'app.views.privacy_policy', name='privacy_policy'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

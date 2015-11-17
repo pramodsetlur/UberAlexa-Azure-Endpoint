@@ -85,7 +85,7 @@ def loginUrl(request):
 	parameters = {
 	'response_type': 'code',
 	'redirect_uri': 'https://uberalexa.azurewebsites.net' + "?user_id=" + request.GET.get('user_id') + "&source_lat=" + request.GET.get('source_lat') + "&source_lon=" + request.GET.get('source_lon') + "&dest_lat=" + request.GET.get('dest_lat') + "&dest_lon=" + request.GET.get('dest_lon') + "&product_id=" + request.GET.get('product_id'),
-	'scope': 'request',
+	'scope': 'request profile',
 	}
 
 	# Redirect user here to authorize your application
@@ -94,3 +94,6 @@ def loginUrl(request):
 
 def test(request):
 	return HttpResponse("Hello World!");
+
+def privacy_policy(request):
+	return HttpResponse("Your access code will be used to book a ride for you. This information is kept confidential and isn't shared with any other party")
