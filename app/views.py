@@ -33,6 +33,7 @@ def home(request):
 
 	# This access_token is what we'll use to make requests in the following
 	# steps
+	return HttpResponse(response)
 	access_token = response.json().get('access_token')
 	
 
