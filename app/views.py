@@ -33,22 +33,8 @@ def home(request):
 
 	# This access_token is what we'll use to make requests in the following
 	# steps
-	return HttpResponse(response)
 	access_token = response.json().get('access_token')
 	
-
-	"""
-	# Fetch details of user
-	url = 'https://api.uber.com/v1/me'
-	response = requests.get(
-	    url,
-	    headers={
-		'Authorization': 'Bearer %s' % access_token
-	    }
-	)
-	data = response.json()
-	"""
-
 	# Request ride
 	url = 'https://api.uber.com/v1/requests'
 	response = requests.post(
