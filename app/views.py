@@ -55,7 +55,7 @@ def home(request):
 
 	table_name = "user_access_code"
 	userId = request.GET.get('user_id')
-	dynamodb.add_access_code(table_name, userId, access_token)
+	#dynamodb.add_access_code(table_name, userId, access_token)
 	
 	return render(request, 'app/base.html', {'final_data':data})
 
