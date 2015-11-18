@@ -3,9 +3,9 @@ from boto3.session import Session
 
 # Get the service resource.
 def add_access_code(table_name, user_id, value):
-	session = Session(aws_access_key_id='AKIAJABIKXG236VA3SCA',
-                  aws_secret_access_key='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',
-                  region_name='us-west-2')
+	session = Session(aws_access_key_id='AKIAIJS5T3EGZ7VUVZGA',
+                  aws_secret_access_key='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',
+                  region_name='us-east-1')
 	dynamodb = session.resource('dynamodb')
 	table = dynamodb.Table(table_name)
 	data = {}
