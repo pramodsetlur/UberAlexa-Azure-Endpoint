@@ -57,7 +57,7 @@ def home(request):
 	userId = request.GET.get('user_id')
 	#dynamodb.add_access_code(table_name, userId, access_token)
 	
-	return render(request, 'app/base.html', {'final_data':data})
+	return render(request, 'app/base.html', {'final_data':str(data) + "--" + access_token})
 
 
 def loginUrl(request):
