@@ -55,7 +55,6 @@ def home(request):
 
 	table_name = "user_access_code"
 	userId = request.GET.get('user_id')
-	#dynamodb.add_access_code(table_name, userId, access_token)
 	
 	return render(request, 'app/base.html', {'final_data':str(data) + "--" + access_token})
 
@@ -81,10 +80,10 @@ def loginUrl(request):
 	return HttpResponse(login_url)
 
 def test(request):
-	return HttpResponse("Hello World!");
+	return HttpResponse("Hello World! Welcome to show finder.");
 
 def privacy_policy(request):
-	return HttpResponse("Your access code will be used to book a ride for you. This information is kept confidential and isn't shared with any other party")
+	return HttpResponse("Your access code will be used to book a ride for you. This information is kept confidential and isn't shared with any other party. Thank you.")
 
 def insertDb(request):
 	userId = request.GET.get('user_id')
